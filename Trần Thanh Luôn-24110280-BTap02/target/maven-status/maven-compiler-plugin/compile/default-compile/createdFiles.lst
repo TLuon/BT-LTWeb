@@ -1,0 +1,10 @@
+vn\iotstar\config\JpaConfig.class
+vn\iotstar\config\Test.class
+vn\iotstar\controller\CategoryController.class
+vn\iotstar\dao\impl\CategoryDao.class
+vn\iotstar\entity\Category.class
+vn\iotstar\service\ICategoryService.class
+vn\iotstar\service\impl\CategoryServiceImpl.class
+vn\iotstar\dao\ICategoryDao.class
+vn\iotstar\entity\Video.class
+vn\iotstar\utils\Constants.class
