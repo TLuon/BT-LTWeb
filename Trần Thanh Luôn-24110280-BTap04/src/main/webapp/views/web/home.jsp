@@ -18,31 +18,7 @@
         .price { color: #ff6b6b; font-weight: bold; font-size: 1.25rem; }
     </style>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="<c:url value='/'/>">MyApp</a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link active" href="<c:url value='/'/>">Trang chủ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<c:url value='/product'/>">Sản phẩm</a></li>
-                </ul>
-                <ul class="navbar-nav">
-                    <c:choose>
-                        <c:when test="${not empty sessionScope.user}">
-                            <li class="nav-item"><a class="nav-link text-white">Xin chào, ${sessionScope.user.fullname}</a></li>
-                            <li class="nav-item"><a class="nav-link text-danger" href="<c:url value='/logout'/>">Đăng xuất</a></li>
-                        </c:when>
-                        <c:otherwise>
-                            <li class="nav-item"><a class="nav-link btn btn-outline-light rounded-pill px-4" href="<c:url value='/login'/>">Đăng nhập</a></li>
-                        </c:otherwise>
-                    </c:choose>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <div class="hero shadow-lg">
+<body>    <div class="hero shadow-lg">
         <h1 class="display-4 fw-bold">Khám phá Sản phẩm Mới nhất</h1>
         <p class="lead">Hàng ngàn sản phẩm chất lượng đang chờ đón bạn.</p>
     </div>
@@ -77,9 +53,5 @@
             </c:forEach>
         </div>
     </div>
-    
-    <footer class="bg-dark text-white text-center py-4 mt-5">
-        <p class="mb-0">&copy; 2026 MyApp. All rights reserved.</p>
-    </footer>
 </body>
 </html>

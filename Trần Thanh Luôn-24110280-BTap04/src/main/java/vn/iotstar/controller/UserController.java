@@ -27,7 +27,7 @@ public class UserController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        User currentUser = (User) session.getAttribute("account");
+        User currentUser = (User) session.getAttribute("user");
         
         if (currentUser == null) {
             resp.sendRedirect(req.getContextPath() + "/login");
@@ -43,7 +43,7 @@ public class UserController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        User currentUser = (User) session.getAttribute("account");
+        User currentUser = (User) session.getAttribute("user");
         
         if (currentUser == null) {
             resp.sendRedirect(req.getContextPath() + "/login");
@@ -55,7 +55,14 @@ public class UserController extends HttpServlet {
 
         // Basic validation
         if (fullname == null || fullname.trim().isEmpty()) {
-            req.setAttribute("error", "Fullname is required.");
+            req.setAttribute("error", "Vui lòng nhập họ tên.");
+            req.setAttribute("user", currentUser);
+            req.getRequestDispatcher("/views/web/profile.jsp").forward(req, resp);
+            return;
+        }
+
+        if (phone != null && phone.length() > 15) {
+            req.setAttribute("error", "Số điện thoại không được vượt quá 15 ký tự.");
             req.setAttribute("user", currentUser);
             req.getRequestDispatcher("/views/web/profile.jsp").forward(req, resp);
             return;
@@ -89,7 +96,7 @@ public class UserController extends HttpServlet {
         }
 
         userService.update(user);
-        session.setAttribute("account", user);
+        session.setAttribute("user", user);
         
         req.setAttribute("message", "Profile updated successfully!");
         req.setAttribute("user", user);

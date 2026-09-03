@@ -31,13 +31,13 @@
                 </ul>
                 <ul class="navbar-nav">
                     <c:choose>
-                        <c:when test="${not empty sessionScope.account}">
+                        <c:when test="${not empty sessionScope.user}">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                    <i class="bi bi-person-circle"></i> ${sessionScope.account.fullname}
+                                    <i class="bi bi-person-circle"></i> ${sessionScope.user.fullname}
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    <c:if test="${sessionScope.account.role == 1}">
+                                    <c:if test="${sessionScope.user.role == 1}">
                                         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/home">Admin Dashboard</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                     </c:if>
