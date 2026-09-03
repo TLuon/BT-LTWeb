@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý danh mục</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background: #337ab7; color: #fff; }
+        img { border-radius: 4px; }
+        .btn { display:inline-block; padding:8px 14px; background:#337ab7; color:#fff; text-decoration:none; border-radius:4px; margin-bottom:15px; }
+        a.action { margin-right: 6px; }
+    </style>
+</head>
+<body>
+    <h2>Quản lý danh mục</h2>
+    <a class="btn" th:href="@{/admin/category/add}">+ Thêm danh mục mới</a>
+
+    <table>
+        <tr>
+            <th>STT</th>
+            <th>Hình ảnh</th>
+            <th>Tên danh mục</th>
+            <th>Hành động</th>
+        </tr>
+        <tr th:each="cate, stt : ${cateList}">
+            <td th:text="${stt.index + 1}"></td>
+            <td>
+                <img th:if="${cate.icon != null}" th:src="@{'/image/' + ${cate.icon}}" width="120" height="90" />
+            </td>
+            <td th:text="${cate.name}"></td>
+            <td>
+                <a class="action" th:href="@{/admin/category/edit(id=${cate.id})}">Sửa</a>
+                |
+                <a class="action" th:href="@{/admin/category/delete(id=${cate.id})}"
+                   onclick="return confirm('Bạn có chắc muốn xóa?');">Xóa</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

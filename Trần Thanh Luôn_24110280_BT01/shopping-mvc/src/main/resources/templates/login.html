@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng nhập</title>
+    <style>
+        body { font-family: Arial, sans-serif; background:#f4f4f4; }
+        .box { width:340px; margin:80px auto; background:#fff; padding:24px; border-radius:6px; box-shadow:0 0 8px rgba(0,0,0,.15);}
+        input[type=text], input[type=password] { width:100%; padding:10px; margin:8px 0; box-sizing:border-box; }
+        button { width:100%; padding:10px; background:#337ab7; color:#fff; border:none; border-radius:4px; cursor:pointer; }
+        .alert { background:#f2dede; color:#a94442; padding:10px; border-radius:4px; margin-bottom:10px; }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h2>Đăng Nhập Vào Hệ Thống</h2>
+
+    <div class="alert" th:if="${alert != null}" th:text="${alert}"></div>
+
+    <form th:action="@{/login}" method="post">
+        <input type="text" name="username" placeholder="Tài khoản" required />
+        <input type="password" name="password" placeholder="Mật khẩu" required />
+        <label><input type="checkbox" name="remember" /> Nhớ tôi</label>
+        <button type="submit">Đăng nhập</button>
+    </form>
+
+    <p>Nếu bạn chưa có tài khoản, hãy <a th:href="@{/register}">Đăng ký</a></p>
+</div>
+</body>
+</html>
